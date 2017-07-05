@@ -39,8 +39,8 @@ public class Employee implements Comparable<Employee> {
 
     @Override
     public int compareTo(Employee e) {
-        if(this.age > e.age) return 1;
-        if(this.age < e.age) return -1;
+        if (this.age > e.age) return 1;
+        if (this.age < e.age) return -1;
         return 0;
 
     }
@@ -51,8 +51,10 @@ public class Employee implements Comparable<Employee> {
     }
 
 }
-    abstract class compareAge implements Comparator<Employee> {
-        public int compareAge(Employee o1, Employee o2) {
+
+class CompareAge implements Comparator<Employee> {
+
+    public int compare(Employee o1, Employee o2) {
         return o1.getAge() - o2.getAge();
     }
 }

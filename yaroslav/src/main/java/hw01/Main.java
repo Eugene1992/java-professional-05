@@ -3,12 +3,13 @@ package hw01;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Ярик on 04.07.2017.
  */
 public class Main {
-    private static ArrayList<Employee> employees = new ArrayList<Employee>();
+    private static List<Employee> employees = new ArrayList<>();
     private static int count;
 
     public static void main(String[] args) {
@@ -33,14 +34,14 @@ public class Main {
 
         while (iterator.hasNext()) {
             Employee next = iterator.next();
-            if(next.getSalary() > count){
+            if (next.getSalary() > count) {
                 System.out.println(next.getName());
             }
         }
-//        Collections.sort(employees);
-//        System.out.println(employees);
+        Collections.sort(employees);
+        System.out.println(employees);
 
-        for (Object o: employees) {
+        for (Object o : employees) {
             System.out.println(o);
         }
     }

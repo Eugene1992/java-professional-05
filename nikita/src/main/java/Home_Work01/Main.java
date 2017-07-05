@@ -2,6 +2,7 @@ package Home_Work01;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 /**
@@ -20,7 +21,7 @@ public class Main {
         Employee employee9 = new Employee("Victor", 26, 63000);
         Employee employee10 = new Employee("Semen", 22, 53000);
 
-        ArrayList employees = new ArrayList();
+        List<Employee> employees = new ArrayList<>();
         employees.add(employee1);
         employees.add(employee2);
         employees.add(employee3);
@@ -37,10 +38,10 @@ public class Main {
 
         }
 
-        Iterator<Object> iterator = employees.iterator();
+        Iterator<Employee> iterator = employees.iterator();
         int avg = 0;
         while (iterator.hasNext()) {
-            Object obj = iterator.next();
+            Employee obj = iterator.next();
 
 
             System.out.println(obj);

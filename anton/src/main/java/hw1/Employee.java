@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * Created by User on 05.07.2017.
  */
-class Employee implements Comparable {
+class Employee implements Comparable<Employee> {
     String name;
     int age;
     int salary;
@@ -18,29 +18,35 @@ class Employee implements Comparable {
         this.salary = salary;
     }
 
-    Employee(String name, int age, int salary){
+    Employee(String name, int age, int salary) {
         this.name = name;
         this.age = age;
         this.salary = salary;
-
     }
-       public int compareTo(Object o) {
-        Employee s = (Employee) o;
-        if (this.salary < s.salary) {
+
+    public int compareTo(Employee emp) {
+        /*if (this.salary < emp.salary) {
             return -1;
-        } else if (this.salary > s.salary){
+        } else if (this.salary > emp.salary) {
             return 1;
         }
-        return 0;
+        return 0;*/
+        return this.salary - emp.salary;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                '}';
     }
+}
 
 
-class AgeComporator implements Comparator {
-    public int compare(Object o1, Object o2) {
-        Employee e1 = (Employee) o1;
-        Employee e2 = (Employee) o2;
-
+class AgeComparator implements Comparator<Employee> {
+    public int compare(Employee e1, Employee e2) {
 
         if (e1.age < e2.age) {
             return -1;
