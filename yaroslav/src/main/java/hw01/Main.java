@@ -1,6 +1,7 @@
 package hw01;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -36,6 +37,8 @@ public class Main {
                 System.out.println(next.getName());
             }
         }
+//        Collections.sort(employees);
+//        System.out.println(employees);
 
         for (Object o: employees) {
             System.out.println(o);
