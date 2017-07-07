@@ -48,7 +48,9 @@ public class Main {
 
         System.out.println(end - start);
 
-        return end - start;
+        long linked = end - start;
+
+        return linked;
     }
 
     static long getTimeOfArray(){
@@ -77,6 +79,8 @@ public class Main {
 
         System.out.println(end - start);
 
-        return end-start;
+        long array = end - start;
+
+        return array;
     }
 }
