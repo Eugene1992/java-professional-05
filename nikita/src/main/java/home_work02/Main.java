@@ -1,6 +1,6 @@
 package home_work02;
 
-import Home_Work01.Employee;
+import home_work01.Employee;
 
 import java.util.LinkedList;
 import java.util.List;
