@@ -1,4 +1,4 @@
-package Home_Work01;
+package home_work01;
 
 import java.util.Comparator;
 
@@ -10,7 +10,7 @@ public class Employee implements Comparable<Employee> {
     public int age;
     public int salary;
 
-   Employee(String name, int age, int salary){
+   public Employee(String name, int age, int salary){
        this.name = name;
        this.age = age;
        this.salary = salary;
