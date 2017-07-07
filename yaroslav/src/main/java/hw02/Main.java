@@ -2,13 +2,14 @@ package hw02;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Ярик on 06.07.2017.
  */
 public class Main {
-    static ArrayList<Counts> al = new ArrayList<Counts>();
-    static LinkedList<Counts> ll = new LinkedList<Counts>();
+    static List<Counts> al = new ArrayList<Counts>();
+    static List<Counts> ll = new LinkedList<Counts>();
 
     public static void main(String[] args) {
         Time t = new Time();
