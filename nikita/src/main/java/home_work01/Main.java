@@ -2,6 +2,7 @@ package home_work01;
 
 import java.util.*;
 
+import static home_work01.Employee.*;
 import static java.util.Comparator.comparingInt;
 
 
@@ -33,14 +34,23 @@ public class Main {
         employees.add(employee9);
         employees.add(employee10);
 
-        Collections.sort(employees, new Employee.AgeComparator());
+        Collections.sort(employees, new AgeComparator());
         System.out.println(employees);
 
-        Collections.sort(employees, comparingInt(o -> o.salary));
+        Collections.sort(employees, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.age - o2.age;
+            }
+        });
         System.out.println(employees);
 
         Iterator<Employee> iterator = employees.iterator();
-        int averageSalary = getAverageSalary(employees.toArray(new Employee[]{}));
+
+        Object[] objects = employees.toArray();
+        Employee[] genEmployees = employees.toArray(new Employee[]{});
+
+        int averageSalary = getAverageSalary(genEmployees);
         while (iterator.hasNext()) {
             Employee next = iterator.next();
             if (next.salary > averageSalary) {
@@ -56,8 +66,7 @@ public class Main {
         }
         return total / employees.length;
     }
-
-    }
+}
 
 
 

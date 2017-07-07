@@ -6,22 +6,24 @@ import java.util.Comparator;
  * Created by Никита on 05.07.2017.
  */
 public class Employee implements Comparable<Employee> {
+    // TODO: 07.07.2017 where is our encapsulation???
     public String name;
     public int age;
     public int salary;
 
-   public Employee(String name, int age, int salary){
-       this.name = name;
-       this.age = age;
-       this.salary = salary;
-   }
+    public Employee(String name, int age, int salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
 
     @Override
     public int compareTo(Employee o) {
         return this.salary - o.salary;
     }
 
-    static class AgeComparator implements Comparator<Employee>{
+    // TODO: 07.07.2017 move to separate class
+    static class AgeComparator implements Comparator<Employee> {
         @Override
         public int compare(Employee o1, Employee o2) {
             return o1.age - o2.age;
