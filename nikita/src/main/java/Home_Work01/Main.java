@@ -1,8 +1,8 @@
 package Home_Work01;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+
+import static java.util.Comparator.comparingInt;
 
 
 /**
@@ -33,21 +33,31 @@ public class Main {
         employees.add(employee9);
         employees.add(employee10);
 
-        for (Object emp:employees) {
+        Collections.sort(employees, new Employee.AgeComparator());
+        System.out.println(employees);
 
-
-        }
+        Collections.sort(employees, comparingInt(o -> o.salary));
+        System.out.println(employees);
 
         Iterator<Employee> iterator = employees.iterator();
-        int avg = 0;
+        int averageSalary = getAverageSalary(employees.toArray(new Employee[]{}));
         while (iterator.hasNext()) {
-            Employee obj = iterator.next();
-
-
-            System.out.println(obj);
+            Employee next = iterator.next();
+            if (next.salary > averageSalary) {
+                System.out.println(next.name);
+            }
         }
+    }
 
+    static int getAverageSalary(Employee... employees) {
+        int total = 0;
+        for (Employee employee : employees) {
+            total += employee.salary;
+        }
+        return total / employees.length;
+    }
 
     }
-}
+
+
 

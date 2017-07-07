@@ -1,9 +1,11 @@
 package Home_Work01;
 
+import java.util.Comparator;
+
 /**
  * Created by Никита on 05.07.2017.
  */
-public class Employee {
+public class Employee implements Comparable<Employee> {
     public String name;
     public int age;
     public int salary;
@@ -13,6 +15,27 @@ public class Employee {
        this.age = age;
        this.salary = salary;
    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return this.salary - o.salary;
+    }
+
+    static class AgeComparator implements Comparator<Employee>{
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return o1.age - o2.age;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                '}';
+    }
 
     public String getName() {
         return name;
