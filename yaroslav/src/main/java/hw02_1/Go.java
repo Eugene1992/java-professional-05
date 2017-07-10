@@ -30,10 +30,10 @@ public class Go<T> {
                     list.get(this.calcPosition(position));
                     break;
                 case SET:
-                    list.add(this.calcPosition(position), elem);
+                    list.set(this.calcPosition(position), elem);
                     break;
                 case REMOVE:
-                    list.add(this.calcPosition(position), elem);
+                    list.remove(this.calcPosition(position));
                     break;
             }
         }
