@@ -25,4 +25,5 @@ public class Stack<T> {
         }
         return 1;
     }
+
 }
