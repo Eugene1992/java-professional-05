@@ -30,13 +30,13 @@ public class Main {
 
         System.out.println("\nПоиск элементов: ");
 
-// ArrayList sertch
+// ArrayList search
         t.setStart(System.currentTimeMillis());
         Go.surtchArray();
         t.setEnd(System.currentTimeMillis());
         System.out.println("ArrayList " + t.getTime());
 
-// LinkedList sertch
+// LinkedList search
         t.setStart(System.currentTimeMillis());
         Go.surtchLinked();
         t.setEnd(System.currentTimeMillis());
@@ -44,13 +44,13 @@ public class Main {
 
         System.out.println("\nПерезапись элементов: ");
 
-// ArrayList sertch
+// ArrayList search
         t.setStart(System.currentTimeMillis());
         Go.rewriteArray();
         t.setEnd(System.currentTimeMillis());
         System.out.println("ArrayList " + t.getTime());
 
-// LinkedList sertch
+// LinkedList search
         t.setStart(System.currentTimeMillis());
         Go.rewriteLinked();
         t.setEnd(System.currentTimeMillis());
