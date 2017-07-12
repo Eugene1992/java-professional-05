@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Ярик on 04.07.2017.
  */
-//public class Main {
+//public class Go {
 //    private static List<Employee> employees = new ArrayList<>();
 //    private static int count;
 //
