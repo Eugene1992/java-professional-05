@@ -29,6 +29,14 @@ public class Main {
         employees.add(employee4);
         employees.add(employee5);
         employees.add(employee6);
+
+        Collections.sort(employees, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.age - o2.age;
+            }
+        });
+        System.out.println(employees);;
         employees.add(employee7);
         employees.add(employee8);
         employees.add(employee9);
@@ -37,13 +45,7 @@ public class Main {
         Collections.sort(employees, new AgeComparator());
         System.out.println(employees);
 
-        Collections.sort(employees, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                return o1.age - o2.age;
-            }
-        });
-        System.out.println(employees);
+
 
         Iterator<Employee> iterator = employees.iterator();
 

@@ -1,86 +1,110 @@
 package home_work02;
 
+
+import com.sun.org.apache.regexp.internal.RE;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+
+import static home_work02.Analyse.Methods.*;
+import static home_work02.Analyse.Position.END;
+import static home_work02.Analyse.Position.MIDDLE;
+import static home_work02.Analyse.Position.START;
+
+
 
 /**
  * Created by Никита on 07.07.2017.
  */
 public class Main {
     public static void main(String[] args) {
+        String value = "Hello world!";
 
-        if (getTimeOfArray() < getTimeOfLinked()){
-            System.out.println("ArrayList is faster!");
-            if  (getTimeOfLinked() < getTimeOfArray()){
-                System.out.println("LinkedList is faster!");
-            } else {
-                System.out.println("They're the same!");
-            }
-        }
+        int count = 10000;
 
+        ArrayList<String> arrayList = new ArrayList<String>();
+        LinkedList<String> linkedList = new LinkedList<String>();
+// ADD
+        Analyse<String> listAnalyzer = new Analyse<>(arrayList);
 
-    }
+        long alStartAdd = listAnalyzer.add(value, count, START, ADD);
+        long alMiddleAdd = listAnalyzer.add(value, count, MIDDLE, ADD);
+        long alEndAdd = listAnalyzer.add(value, count, END, ADD);
 
-    static long getTimeOfLinked(){
-        Player player1 = new Player("Andy Murray", 9390);
-        Player player2 = new Player("Rafael Nadal", 7285);
-        Player player3 = new Player("Stan Wawrinka", 6175);
-        Player player4 = new Player("Novak Djokovic", 6055);
-        Player player5 = new Player("Roger Federer", 5265);
+        System.out.println("---- ArrayList ----");
+        System.out.println("---- add() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                alStartAdd, alMiddleAdd, alEndAdd);
 
-        List<Player> list = new LinkedList<>();
-        list.add(player1);
-        list.add(player2);
-        list.add(player3);
-        list.add(player4);
+        listAnalyzer.setList(linkedList);
+        long llStartAdd = listAnalyzer.add(value, count, START, ADD);
+        long llMiddleAdd = listAnalyzer.add(value, count, MIDDLE, ADD);
+        long llEndAdd = listAnalyzer.add(value, count, END, ADD);
+        System.out.println();
+        System.out.println("---- LinkedList ----");
+        System.out.println("---- add() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                llStartAdd, llMiddleAdd, llEndAdd);
+// GET
+        listAnalyzer.setList(arrayList);
+        long alStartGet = listAnalyzer.add(value, count, START, GET);
+        long alMiddleGet = listAnalyzer.add(value, count, MIDDLE, GET);
+        long alEndGet = listAnalyzer.add(value, count, END, GET);
+        System.out.println();
+        System.out.println("---- ArrayList ----");
+        System.out.println("---- get() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                alStartGet, alMiddleGet, alEndGet);
 
-        long start = System.currentTimeMillis();
+        listAnalyzer.setList(linkedList);
+        long llStartGet = listAnalyzer.add(value, count, START, GET);
+        long llMiddleGet = listAnalyzer.add(value, count, MIDDLE, GET);
+        long llEndGet = listAnalyzer.add(value, count, END, GET);
+        System.out.println();
+        System.out.println("---- LinkedList ----");
+        System.out.println("---- get() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                llStartGet, llMiddleGet, llEndGet);
+// SET
+        listAnalyzer.setList(arrayList);
+        long alStartSet = listAnalyzer.add(value, count, START, SET);
+        long alMiddleSet = listAnalyzer.add(value, count, MIDDLE, SET);
+        long alEndSet = listAnalyzer.add(value, count, END, SET);
+        System.out.println();
+        System.out.println("---- ArrayList ----");
+        System.out.println("---- set() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                alStartSet, alMiddleSet, alEndSet);
 
-        for (int i = 0; i < 10000; i++) {
-            list.add(4, player5);
-            list.remove(3);
-            list.set(3, player5);
-            list.get(1);
-        }
+        listAnalyzer.setList(linkedList);
+        long llStartSet = listAnalyzer.add(value, count, START, SET);
+        long llMiddleSet = listAnalyzer.add(value, count, MIDDLE, SET);
+        long llEndSet = listAnalyzer.add(value, count, END, SET);
+        System.out.println();
+        System.out.println("---- LinkedList ----");
+        System.out.println("---- set() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                llStartSet, llMiddleSet, llEndSet);
+// REMOVE
+        listAnalyzer.setList(arrayList);
+        long alStartRemove = listAnalyzer.add(value, count, START, REMOVE);
+        long alMiddleRemove = listAnalyzer.add(value, count, MIDDLE, REMOVE);
+        long alEndRemove = listAnalyzer.add(value, count, END, REMOVE);
+        System.out.println();
+        System.out.println("---- ArrayList ----");
+        System.out.println("---- remove() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                alStartRemove, alMiddleRemove, alEndRemove);
 
-        long end = System.currentTimeMillis();
-
-        System.out.println(end - start);
-
-        long linked = end - start;
-
-        return linked;
-    }
-
-    static long getTimeOfArray(){
-        Player player1 = new Player("Andy Murray", 9390);
-        Player player2 = new Player("Rafael Nadal", 7285);
-        Player player3 = new Player("Stan Wawrinka", 6175);
-        Player player4 = new Player("Novak Djokovic", 6055);
-        Player player5 = new Player("Roger Federer", 5265);
-
-        List<Player> list = new ArrayList<>(10);
-        list.add(player1);
-        list.add(player2);
-        list.add(player3);
-        list.add(player4);
-
-        long start = System.currentTimeMillis();
-
-        for (int i = 0; i < 10000; i++) {
-            list.add(4, player5);
-            list.remove(3);
-            list.set(3, player5);
-            list.get(1);
-        }
-
-        long end = System.currentTimeMillis();
-
-        System.out.println(end - start);
-
-        long array = end - start;
-
-        return array;
+        listAnalyzer.setList(linkedList);
+        long llStartRemove = listAnalyzer.add(value, count, START, REMOVE);
+        long llMiddleRemove = listAnalyzer.add(value, count, MIDDLE, REMOVE);
+        long llEndRemove = listAnalyzer.add(value, count, END, REMOVE);
+        System.out.println();
+        System.out.println("---- LinkedList ----");
+        System.out.println("---- remove() ----");
+        System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
+                llStartRemove, llMiddleRemove, llEndRemove);
     }
 }
