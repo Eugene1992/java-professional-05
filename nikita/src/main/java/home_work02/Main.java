@@ -23,8 +23,8 @@ public class Main {
 
         int count = 10000;
 
-        ArrayList<String> arrayList = new ArrayList<String>();
-        LinkedList<String> linkedList = new LinkedList<String>();
+        ArrayList<String> arrayList = new ArrayList<>();
+        LinkedList<String> linkedList = new LinkedList<>();
 // ADD
         Analyse<String> listAnalyzer = new Analyse<>(arrayList);
 
