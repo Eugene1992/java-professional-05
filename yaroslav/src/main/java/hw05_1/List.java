@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class List<T> {
     // CONSTANTS
-    final private int DEFAULT_CAPACITY = 10;
+    private final int DEFAULT_CAPACITY = 10;
     private int size = DEFAULT_CAPACITY;
     private T[] array;
     private T[] cash;
@@ -25,12 +25,9 @@ public class List<T> {
     }
 
     private void rangeCheck(int index) {
-        if (index >= size)
-            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
-    }
-
-    private String outOfBoundsMsg(int index) {
-        return "Index: " + index + ", Size: " + size;
+        if (index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
     }
 
     private void checkCapasity() {
@@ -56,9 +53,9 @@ public class List<T> {
     }
 
     public void add(int index, T elem) {
-        checkCapasity();
+        checkCapasity(); // TODO: 19.07.2017 Understand what this method is doing?
         rangeCheck(index);
-        cash = Arrays.copyOf(array, index - 1);
+        cash = Arrays.copyOf(array, index - 1); // TODO: 19.07.2017 Get out into separate method
         cash[index] = elem;
         for (int i = index + 1; i < size; i++) {
             cash[i] = array[i - 1];
@@ -96,7 +93,7 @@ public class List<T> {
 
     public int indexOf(T elem) {
         for (int i = 0; i < size; i++) {
-            if (elem == array[i]) {
+            if (elem.equals(array[i])) {
                 return i;
             }
         }
