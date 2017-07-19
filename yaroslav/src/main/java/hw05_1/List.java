@@ -1,7 +1,5 @@
 package hw05_1;
 
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class List<T> {
@@ -69,6 +67,7 @@ public class List<T> {
     }
 
     public void remove(int index){
+        rangeCheck(index);
         cash = Arrays.copyOf(array, index - 1);
         for (int i = index; i < size; i++) {
             cash[i] = array[index];
