@@ -1,26 +1,18 @@
-package home_work02;
+package reflect;
+
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import com.sun.org.apache.regexp.internal.RE;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import static home_work02.Analyse.Methods.*;
-import static home_work02.Analyse.Position.END;
-import static home_work02.Analyse.Position.MIDDLE;
-import static home_work02.Analyse.Position.START;
-
+//import static reflect.Analyse.Methods.*;
+//import static reflect.Analyse.Position.*;
 
 
 /**
  * Created by Никита on 07.07.2017.
  */
 public class Main {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         String value = "Hello world!";
 
         int count = 10000;
@@ -108,6 +100,5 @@ public class Main {
         System.out.println("---- remove() ----");
         System.out.printf("START: %d\nMIDLE: %d\nEND: %d\n",
                 llStartRemove, llMiddleRemove, llEndRemove);
-
-    }
+    }*/
 }

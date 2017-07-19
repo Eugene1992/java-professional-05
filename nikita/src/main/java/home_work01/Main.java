@@ -59,6 +59,7 @@ public class Main {
                 System.out.println(next.name);
             }
         }
+
     }
 
     static int getAverageSalary(Employee... employees) {
