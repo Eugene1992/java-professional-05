@@ -3,48 +3,53 @@ package hw05_1;
 import java.util.Arrays;
 
 public class List<T> {
-    // CONSTANTS
+
     private final int DEFAULT_CAPACITY = 10;
-    private int size = DEFAULT_CAPACITY;
+    private int capacity = DEFAULT_CAPACITY;
+    private int size = 0;
     private T[] array;
-    private T[] cash;
 
 
     public List(T[] array) {
         this.array = array;
     }
 
-    public List(int size) {
-        this.array = (T[]) new Object[size];
-        this.cash = (T[]) new Object[size];
+    public List(int capacity) {
+        this.array = (T[]) new Object[capacity];
     }
 
     public List() {
-        this.array = (T[]) new Object[size];
-        this.cash = (T[]) new Object[size];
+        this.array = (T[]) new Object[capacity];
     }
 
     private void rangeCheck(int index) {
-        if (index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        if (index >= capacity) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + capacity);
         }
     }
 
-    private void checkCapasity() {
+    private void checkCapacity() {
         int calc = 0;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < capacity; index++) {
             if (array[index] == null) {
                 calc++;
             }
         }
-        if (calc > size * 0.7) {
-            size = size / 2 * 3 + 1;
+        if (calc > capacity * 0.7) {
+            int  lastCapacity = capacity;
+            capacity = capacity / 2 * 3 + 1;
+            expendArray(lastCapacity);
         }
+    }
+    private void expendArray(int lastCapacity){
+        T[] cash = Arrays.copyOf(array, lastCapacity);
+        this.array = (T[]) new Object[capacity];
+        this.array = Arrays.copyOf(cash, capacity);
     }
 
     public void add(T elem) {
-        checkCapasity();
-        for (int index = 0; index < size; index++) {
+        checkCapacity();
+        for (int index = 0; index < capacity; index++) {
             if (array[index] == null) {
                 array[index] = elem;
                 break;
@@ -53,29 +58,31 @@ public class List<T> {
     }
 
     public void add(int index, T elem) {
-        checkCapasity(); // TODO: 19.07.2017 Understand what this method is doing?
+        checkCapacity();
         rangeCheck(index);
-        cash = Arrays.copyOf(array, index - 1); // TODO: 19.07.2017 Get out into separate method
+        T[] cash = (T[]) new Object[capacity];
+        cash = Arrays.copyOf(array, index - 1);
         cash[index] = elem;
-        for (int i = index + 1; i < size; i++) {
+        for (int i = index + 1; i < capacity; i++) {
             cash[i] = array[i - 1];
         }
-        array = Arrays.copyOf(cash, size);
+        array = Arrays.copyOf(cash, capacity);
     }
 
     public void remove(int index){
         rangeCheck(index);
-        cash = Arrays.copyOf(array, index - 1);
-        for (int i = index; i < size; i++) {
+        T[] cash = Arrays.copyOf(array, index - 1);
+        for (int i = index; i < capacity; i++) {
             cash[i] = array[index];
         }
     }
 
     public void remove(T elem){
-        for (int index = 0; index < size; index++) {
+        T[] cash;
+        for (int index = 0; index < capacity; index++) {
             if (array[index] == elem){
                 cash = Arrays.copyOf(array, index - 1);
-                for (int i = index; i < size; i++) {
+                for (int i = index; i < capacity; i++) {
                     cash[i] = array[index];
                 }
                 break;
@@ -84,7 +91,13 @@ public class List<T> {
     }
 
     public int size() {
-        return size;
+        int countOfNull=0;
+        for(T elem: array){
+            if(elem == null){
+                countOfNull++;
+            }
+        }
+        return size = capacity - countOfNull;
     }
 
     public T get(int index) {
@@ -92,9 +105,17 @@ public class List<T> {
     }
 
     public int indexOf(T elem) {
-        for (int i = 0; i < size; i++) {
-            if (elem.equals(array[i])) {
-                return i;
+        if (elem == null) {
+            for (int i = 0; i < capacity; i++) {
+                if (array[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < capacity; i++) {
+                if (elem.equals(array[i])) {
+                    return i;
+                }
             }
         }
         return -1;
