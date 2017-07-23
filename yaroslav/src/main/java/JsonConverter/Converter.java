@@ -3,7 +3,7 @@ package JsonConverter;
 import java.lang.reflect.Field;
 
 public class Converter {
-    public void convert(Object obj) throws IllegalAccessException, NoSuchFieldException {
+    public void convert(Object obj) {
 
         Class<?> aClass = obj.getClass();
         String nameOfClass = aClass.getSimpleName();
@@ -17,8 +17,14 @@ public class Converter {
         for(Field field: fields){
             boolean jPointerAnnotationPresent = field.isAnnotationPresent(JPointer.class);
             if(jPointerAnnotationPresent == true){
-                    Object value = obj.getClass().getDeclaredField(field.getName()).get(obj);
-                    System.out.println("\""+ field.getName() +"\""+":" + ""+value+"\"");
+                    field.setAccessible(true);
+                Object o = null;
+                try {
+                    o = field.get(obj);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("\""+ field.getName() +"\""+":" + "\""+ o +"\"");
             }
 
         }
