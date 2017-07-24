@@ -24,7 +24,7 @@ public class Converter {
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                System.out.println("\""+ field.getName() +"\""+":" + "\""+ o +"\"");
+                System.out.println("\""+ field.getName() +"\""+":" + "\""+ o +"\",");
             }
 
         }
