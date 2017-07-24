@@ -2,16 +2,19 @@ package JsonConverter;
 
 @JEntity
 public class Human {
+
     @JPointer(name = "name")
-    private String FirstName;
+    private String firstName;
+
     @JPointer
-    private String LastName;
+    private String lastName;
+
     @JPointer
     private int age;
 
     public Human(String firstName, String lastName, int age) {
-        FirstName = firstName;
-        LastName = lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
     }
 }
