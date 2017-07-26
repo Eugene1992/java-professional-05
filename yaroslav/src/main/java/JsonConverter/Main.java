@@ -7,6 +7,6 @@ public class Main {
     public static void main(String[] args) {
         Human human = new Human("Ivan","Ivan", 18);
         Converter converter = new Converter();
-        converter.convert(human);
+        System.out.println(converter.convert(human));
     }
 }
